@@ -1,0 +1,176 @@
+:root {
+  --primary: #4361ee;       /* Vibrant blue */
+  --primary-dark: #3a56d4;  /* Slightly darker blue */
+  --secondary: #f72585;     /* Energetic pink */
+  --background: #1a1a2e;    /* Dark navy */
+  --card-bg: #16213e;       /* Slightly lighter navy */
+  --text-light: #f8f9fa;    /* Off-white */
+  --text-muted: #adb5bd;    /* Light gray */
+  --success: #4cc9f0;       /* Bright teal */
+}
+
+.home-container {
+  min-height: 100vh;
+  width: 100%;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-light);
+}
+
+.header-container {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.gym-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.gym-subtitle {
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.location-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.location-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+.card-image-container {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.location-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.location-card:hover .location-image {
+  transform: scale(1.1);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 50%);
+}
+
+.card-content {
+  padding: 24px;
+}
+
+.location-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text-light);
+}
+
+.location-address {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.select-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: white;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.select-button::after {
+  content: '→';
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.location-card:hover .select-button {
+  background: var(--primary-dark);
+  transform: translateX(4px);
+}
+
+.location-card:hover .select-button::after {
+  transform: translateX(4px);
+}
+
+/* Focus states for accessibility */
+.location-card:focus-within {
+  outline: 2px solid var(--success);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .gym-title {
+    font-size: 2rem;
+  }
+  
+  .locations-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  
+  .card-image-container {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-container {
+    padding: 30px 15px;
+  }
+  
+  .gym-title {
+    font-size: 1.8rem;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+}
