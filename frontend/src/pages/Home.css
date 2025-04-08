@@ -174,3 +174,73 @@
     padding: 20px;
   }
 }
+
+
+/* Staff Login Button - Fixed Size Version */
+.login-button {
+  display: inline-block;
+  padding: 12px 24px; /* Fixed padding */
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4cc9f0, #4895ef);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: auto; /* Changed from min-width to auto */
+  margin-left: auto;
+  /* Explicit size constraints */
+  min-width: 140px;
+  max-width: 140px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.login-button:hover {
+  background-color: #3a2e55;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.login-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Header adjustments to accommodate fixed button */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.title-wrapper {
+  text-align: left;
+  flex-grow: 1;
+}
+
+/* Responsive adjustments for login button */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .title-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .login-button {
+    margin: 0 auto; /* Center on mobile */
+    /* Maintain the same size on mobile */
+    min-width: 140px;
+    max-width: 140px;
+  }
+}

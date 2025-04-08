@@ -7,9 +7,9 @@ import gym2Image from './event.jpg';
 import gym3Image from './volleyball.jpeg';
 
 const locations = [
-  { name: "TALISAY GYM", address: "PUROK MAGKONO", image: gym1Image },
-  { name: "APAGAN 1 GYM", address: "NEAR BARANGAY HALL", image: gym2Image },
-  { name: "AMOTAY GYM", address: "THE BACK OF BARANGAY HALL", image: gym3Image },
+  { name: "TALISAY", address: "PUROK MAGKONO", image: gym1Image },
+  { name: "APAGAN 1", address: "NEAR BARANGAY HALL", image: gym2Image },
+  { name: "AMONTAY", address: "THE BACK OF BARANGAY HALL", image: gym3Image },
 ];
 
 function Home() {
@@ -22,8 +22,18 @@ function Home() {
   return (
     <div className="home-container">
       <div className="header-container">
-        <h1 className="gym-title">NASIPIT GYM RESERVATION</h1>
-        <p className="gym-subtitle">Select your preferred location</p>
+        <div className="header-content">
+          <div className="title-wrapper">
+            <h1 className="gym-title">NASIPIT GYM RESERVATION</h1>
+            <p className="gym-subtitle">Select your preferred location</p>
+          </div>
+          <button 
+            className="login-button"
+            onClick={() => navigate('/staff/login')}
+          >
+            Staff Login
+          </button>
+        </div>
       </div>
       
       <div className="locations-grid">

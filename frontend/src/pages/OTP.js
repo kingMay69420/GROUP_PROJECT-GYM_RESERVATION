@@ -11,18 +11,22 @@ function OTP() {
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
   const [isResendDisabled, setIsResendDisabled] = useState(true);
 
-  const verifyOTP = async () => {
-    try {
-      await axios.post("http://localhost:5000/api/otp/verify-otp", { email, otp });
-      
-      
-    // ✅ Navigate to Success Page with reservation details
-    navigate("/success", { state: { reservation: location.state.reservation } });
+// In OTP.js, modify the verifyOTP function:
+const verifyOTP = async () => {
+  try {
+    await axios.post("http://localhost:5000/api/otp/verify-otp", { email, otp });
+    
+    // Navigate to Success Page with reservation details from location.state
+    navigate("/success", { 
+      state: { 
+        reservation: location.state.reservation 
+      } 
+    });
   
-    } catch (error) {
-      alert("Invalid or expired OTP");
-    }
-  };
+  } catch (error) {
+    alert("Invalid or expired OTP");
+  }
+};
   
 
   const resendOTP = async () => {

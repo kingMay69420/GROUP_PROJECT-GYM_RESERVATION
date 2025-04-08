@@ -1,0 +1,47 @@
+/* Additional styles for Register page */
+.register-container h2 {
+    color: #16222a;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+  }
+  
+  .form-input:focus {
+    border-color: #3a6073;
+    box-shadow: 0 0 0 2px rgba(58, 96, 115, 0.2);
+    outline: none;
+  }
+  
+  .password-strength {
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+  }
+  
+  .terms-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  
+  .terms-text a {
+    color: #3a6073;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .terms-text a:hover {
+    text-decoration: underline;
+  }

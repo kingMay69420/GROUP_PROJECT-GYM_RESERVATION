@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Reserve.css";
+import "./Reserve.css"; // Using the same CSS file as Login
 
 function Reserve() {
   const location = useLocation();
@@ -14,12 +14,14 @@ function Reserve() {
     email: "",
     date: "",
     timeSlot: "",
-    price: 500, // Default price
+    price: 120,
   });
 
   const [availability, setAvailability] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const checkAvailability = async () => {
+    setIsLoading(true);
     try {
       const res = await axios.post("http://localhost:5000/api/reservations/check-availability", {
         date: formData.date,
@@ -28,61 +30,117 @@ function Reserve() {
       setAvailability(res.data.message);
     } catch (error) {
       setAvailability("❌ Time slot not available");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleReserve = async () => {
+    setIsLoading(true);
     try {
-      // 1. Reserve first
-      const reservationResponse = await axios.post(
-        "http://localhost:5000/api/reservations/reserve",
-        formData
-      );
-  
-      console.log("Reservation Success:", reservationResponse.data);
-  
-      // 2. Send OTP
-      const otpResponse = await axios.post("http://localhost:5000/api/otp/send-otp", {
+      await axios.post("http://localhost:5000/api/reservations/reserve", formData);
+      await axios.post("http://localhost:5000/api/otp/send-otp", {
         email: formData.email,
       });
-  
-      console.log("OTP Sent:", otpResponse.data);
-  
-      // 3. Navigate to OTP Page only if everything is successful
-      navigate("/otp", { state: { email: formData.email } });
-      
+      navigate("/otp", { 
+        state: { 
+          email: formData.email,
+          reservation: formData
+        } 
+      });
     } catch (error) {
-      console.error("Error making reservation:", error.response ? error.response.data : error);
-      alert("Error making reservation. Please try again.");
+      console.error("Error:", error.response?.data || error);
+      alert("Error processing your request. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
+
   return (
-    <div className="reservation-container">
-      <h1>{selectedLocation.name}</h1>
-      <input type="text" placeholder="Name" onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
-      <input type="text" placeholder="Contact No." onChange={(e) => setFormData({ ...formData, contact: e.target.value })} />
-      <input type="email" placeholder="Email" onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
-      <input type="date" onChange={(e) => setFormData({ ...formData, date: e.target.value })} />
-      <select onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}>
-        <option value="">Select Time Slot</option>
-        <option value="8:00 AM">8:00 AM</option>
-        <option value="9:00 AM">9:00 AM</option>
-        <option value="10:00 AM">10:00 AM</option>
-        <option value="11:00 AM">11:00 AM</option>
-        <option value="12:00 PM">12:00 PM</option>
-        <option value="1:00 PM">1:00 PM</option>
-        <option value="2:00 PM">2:00 PM</option>
-        <option value="3:00 PM">3:00 PM</option>
-        <option value="4:00 PM">4:00 PM</option>
-        <option value="5:00 PM">5:00 PM</option>
-        <option value="6:00 PM">6:00 PM</option>
-      </select>
-      <button onClick={checkAvailability}>Check Availability</button>
-      {availability && <p>{availability}</p>}
-      {availability === "Time slot available" && <button onClick={handleReserve}>Reserve</button>}
+    <div className="login-container">
+      <div className="reserve-card">
+        <h2 className="reserve-title">Reserve at {selectedLocation.name}</h2>
+        
+        <div className="input-group">
+          <input 
+            type="text" 
+            className="form-input"
+            placeholder="Full Name" 
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })} 
+          />
+        </div>
+        
+        <div className="input-group">
+          <input 
+            type="text" 
+            className="form-input"
+            placeholder="Contact Number" 
+            onChange={(e) => setFormData({ ...formData, contact: e.target.value })} 
+          />
+        </div>
+        
+        <div className="input-group">
+          <input 
+            type="email" 
+            className="form-input"
+            placeholder="Email Address" 
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })} 
+          />
+        </div>
+        
+        <div className="input-group">
+          <input 
+            type="date" 
+            className="form-input"
+            onChange={(e) => setFormData({ ...formData, date: e.target.value })} 
+          />
+        </div>
+        
+        <div className="input-group">
+          <select 
+            className="form-select"
+            onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
+          >
+            <option value="">Select Time Slot</option>
+            {[8,9,10,11,12,13,14,15,16,17,18].map(hour => (
+              <option key={hour} value={`${hour > 12 ? hour-12 : hour}:00 ${hour >= 12 ? 'PM' : 'AM'}`}>
+                {`${hour > 12 ? hour-12 : hour}:00 ${hour >= 12 ? 'PM' : 'AM'}`}
+              </option>
+            ))}
+          </select>
+        </div>
+        
+        <div className="price-display">
+          <span>Total Price:</span>
+          <span className="price-amount">₱{formData.price.toFixed(2)}</span>
+        </div>
+        
+        <button 
+          className="availability-button"
+          onClick={checkAvailability}
+          disabled={isLoading || !formData.date || !formData.timeSlot}
+        >
+          {isLoading ? "Checking..." : "Check Availability"}
+        </button>
+        
+        {availability && (
+          <div className={`availability-status ${availability.includes("❌") ? "error" : "success"}`}>
+            {availability}
+          </div>
+        )}
+        
+        {availability === "Time slot available" && (
+          <button 
+            className="login-button"
+            onClick={handleReserve}
+            disabled={isLoading}
+          >
+            {isLoading ? "Processing..." : "Confirm Reservation"}
+          </button>
+        )}
+      </div>
     </div>
   );
 }
 
 export default Reserve;
-

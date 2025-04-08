@@ -3,9 +3,11 @@ console.log("Email User:", process.env.EMAIL_USER);
 console.log("Email Pass:", process.env.EMAIL_PASS ? "Loaded" : "Not Loaded");
 const express = require("express");
 const cors = require("cors");
-const connectDB = require("./config/db"); // Import MongoDB connection function
+const { connectDB } = require("./config/db"); // ✅ Correct
 const reservationRoutes = require("./routes/reservationRoutes");
 const otpRoutes = require("./routes/otpRoutes");
+const staffAuthRoutes = require("./routes/staffAuthRoutes");
+
 
 const app = express();
 
@@ -19,6 +21,8 @@ app.use(express.json());
 // API Routes
 app.use("/api/reservations", reservationRoutes);
 app.use("/api/otp", otpRoutes);
+app.use("/api/staff", staffAuthRoutes);
+
 
 // Test Route
 app.get("/", (req, res) => {
@@ -33,3 +37,5 @@ app.use((req, res) => {
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+
+
