@@ -42,7 +42,10 @@ router.get("/", async (req, res) => {
       return res.status(400).json({ message: "Barangay parameter is required" });
     }
 
-    const reservations = await Reservation.find({ barangay });
+    const reservations = await Reservation.find({
+      barangay: { $regex: new RegExp(`^${barangay}$`, 'i') }  // Case-insensitive match
+    });
+
     console.log(`Found ${reservations.length} reservations for barangay ${barangay}`);
     
     res.json(reservations);
@@ -51,6 +54,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 });
+
 
 // Check Availability
 router.post("/check-availability", async (req, res) => {
@@ -78,24 +82,27 @@ router.post("/check-availability", async (req, res) => {
 });
 
 
-// PUT update reservation
+// PUT update reservation (only date, timeSlot, and price)
 router.put("/:id", async (req, res) => {
   try {
     console.log(`PUT /api/reservations/${req.params.id} body:`, req.body);
     const { id } = req.params;
-    const { barangay, name, contact, email, date, timeSlot, price } = req.body;
+    const { date, timeSlot, price } = req.body;
 
-    if (!id || !barangay || !name || !contact || !email || !date || !timeSlot || !price) {
+    // Check if all required fields are provided
+    if (!date || !timeSlot || !price) {
       console.warn("Missing required parameters for update");
-      return res.status(400).json({ message: "All fields are required for update" });
+      return res.status(400).json({ message: "Date, timeSlot, and price are required for update" });
     }
 
+    // Find and update the reservation (only update date, timeSlot, and price)
     const updatedReservation = await Reservation.findByIdAndUpdate(
-      id, 
-      { barangay, name, contact, email, date, timeSlot, price }, 
+      id,
+      { date, timeSlot, price },
       { new: true }
     );
-    
+
+    // If no reservation is found, send a 404 error
     if (!updatedReservation) {
       console.warn(`No reservation found with id ${id}`);
       return res.status(404).json({ message: "Reservation not found" });

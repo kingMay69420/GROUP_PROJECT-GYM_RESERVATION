@@ -131,9 +131,9 @@ function Reserve() {
         
         {availability === "Time slot available" && (
           <button 
-            className="login-button"
+            className="confirm-reservation-button" // Changed class name here
             onClick={handleReserve}
-            disabled={isLoading}
+            disabled={isLoading || !availability}
           >
             {isLoading ? "Processing..." : "Confirm Reservation"}
           </button>
@@ -141,6 +141,7 @@ function Reserve() {
       </div>
     </div>
   );
+  
 }
 
 export default Reserve;

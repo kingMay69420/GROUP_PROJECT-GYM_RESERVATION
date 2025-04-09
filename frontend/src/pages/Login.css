@@ -51,8 +51,10 @@ body {
   }
   
   .login-button {
-    width: 100%;
-    padding: 5px;
+    display: block;
+    width: 50%; /* or whatever width you prefer */
+    margin: 0 auto 1.5rem; /* top | horizontal | bottom */
+    padding: 12px; /* increased from 5px for better proportions */
     background: linear-gradient(to right, #16222a, #3a6073);
     color: white;
     border: none;
@@ -61,9 +63,9 @@ body {
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-bottom: 1.5rem;
   }
   
+  /* The rest of your CSS remains the same */
   .login-button:hover {
     background: linear-gradient(to right, #3a6073, #16222a);
     transform: translateY(-2px);

@@ -125,3 +125,10 @@
     color: #cbd5e0;
     cursor: not-allowed;
   }
+
+  .otp-note {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+  }
+  

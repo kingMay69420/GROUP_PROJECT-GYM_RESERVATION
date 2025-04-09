@@ -64,6 +64,9 @@ const verifyOTP = async () => {
       <div className="otp-card">
         <h1 className="otp-title">Enter Verification Code</h1>
         <p className="otp-subtitle">We've sent a 6-digit code to <span className="email-highlight">{email}</span></p>
+        <p className="otp-note" style={{ fontSize: "0.9rem", color: "#888", marginBottom: "1rem" }}>
+        📬 If you don't see the OTP in your inbox, please check your Spam or Junk folder.
+      </p>
         
         <div className="otp-input-group">
           <input 

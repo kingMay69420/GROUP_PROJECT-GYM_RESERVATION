@@ -21,7 +21,8 @@ function Home() {
 
   return (
     <div className="home-container">
-      <div className="header-container">
+      {/* Header Section */}
+      <header className="header-container">
         <div className="header-content">
           <div className="title-wrapper">
             <h1 className="gym-title">NASIPIT GYM RESERVATION</h1>
@@ -34,9 +35,10 @@ function Home() {
             Staff Login
           </button>
         </div>
-      </div>
+      </header>
       
-      <div className="locations-grid">
+      {/* Main Content */}
+      <main className="locations-grid">
         {locations.map((loc, index) => (
           <div 
             key={index} 
@@ -63,7 +65,7 @@ function Home() {
             </div>
           </div>
         ))}
-      </div>
+      </main>
     </div>
   );
 }
