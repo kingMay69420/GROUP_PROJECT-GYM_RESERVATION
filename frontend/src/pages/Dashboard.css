@@ -190,6 +190,18 @@ td button:hover {
   }
 }
 
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-wrapper table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+
 /* Mobile - Portrait and Landscape */
 @media (max-width: 768px) {
   .dashboard-header {
