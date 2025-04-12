@@ -12,9 +12,10 @@
 .home-container {
   min-height: 100vh;
   width: 100%;
-  padding: 20px 15px;
+  padding: 15px;
   font-family: 'Poppins', sans-serif;
   color: var(--text-light);
+  background-color: var(--background);
 }
 
 .header-container {
@@ -29,7 +30,7 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   gap: 1rem;
 }
 
@@ -39,22 +40,23 @@
 }
 
 .login-button {
-  padding: 0.75rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   background: linear-gradient(135deg, #4cc9f0, #4895ef);
   color: white;
   border: none;
   border-radius: 50px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 140px;
+  width: 100%;
+  max-width: 140px;
   box-sizing: border-box;
 }
 
 .login-button:hover {
-  background-color: #3a2e55;
+  background: linear-gradient(135deg, #4895ef, #4361ee);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -66,10 +68,10 @@
 .locations-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 25px;
+  gap: 20px;
   max-width: 1200px;
-  margin: 30px auto 0;
-  padding: 0 10px;
+  margin: 25px auto 0;
+  padding: 0 5px;
 }
 
 .location-card {
@@ -84,7 +86,7 @@
 
 .card-image-container {
   position: relative;
-  height: 180px;
+  height: 160px;
   overflow: hidden;
 }
 
@@ -105,31 +107,31 @@
 }
 
 .card-content {
-  padding: 20px;
+  padding: 15px;
 }
 
 .location-name {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: var(--text-light);
 }
 
 .location-address {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 16px;
-  line-height: 1.5;
+  margin-bottom: 12px;
+  line-height: 1.4;
 }
 
 .select-button {
   display: inline-flex;
   align-items: center;
-  padding: 10px 18px;
+  padding: 8px 16px;
   background: var(--primary);
   color: white;
   border-radius: 24px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   transition: all 0.3s ease;
   border: none;
@@ -137,7 +139,7 @@
 
 .select-button::after {
   content: '→';
-  margin-left: 8px;
+  margin-left: 6px;
   transition: transform 0.3s ease;
 }
 
@@ -147,30 +149,36 @@
   outline-offset: 2px;
 }
 
-/* Tablet and larger mobile devices */
+/* Small tablets and large phones (landscape view) */
 @media (min-width: 480px) {
   .home-container {
-    padding: 25px 20px;
+    padding: 20px;
   }
   
   .locations-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    padding: 0 15px;
+    padding: 0 10px;
   }
   
   .card-image-container {
-    height: 160px;
+    height: 150px;
+  }
+  
+  .login-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
   }
 }
 
-/* Desktop and larger tablets */
+/* Tablets and small desktops */
 @media (min-width: 768px) {
   .header-content {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 0;
+    padding: 0 1rem;
   }
   
   .title-wrapper {
@@ -179,25 +187,44 @@
   
   .login-button {
     margin-left: auto;
+    width: auto;
   }
   
   .locations-grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 0 20px;
+    gap: 25px;
+    padding: 0 15px;
+    margin-top: 30px;
   }
   
   .card-image-container {
-    height: 200px;
+    height: 180px;
+  }
+  
+  .card-content {
+    padding: 20px;
+  }
+  
+  .location-name {
+    font-size: 1.3rem;
+  }
+  
+  .location-address {
+    font-size: 0.9rem;
+  }
+  
+  .select-button {
+    padding: 10px 18px;
+    font-size: 0.9rem;
   }
   
   .location-card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   }
   
   .location-card:hover .location-image {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   
   .location-card:hover .select-button {
@@ -210,9 +237,56 @@
   }
 }
 
-/* Large desktop screens */
+/* Large tablets and desktops */
+@media (min-width: 992px) {
+  .home-container {
+    padding: 30px;
+  }
+  
+  .card-image-container {
+    height: 200px;
+  }
+}
+
+/* Extra large desktops */
 @media (min-width: 1200px) {
   .home-container {
     padding: 40px;
+  }
+  
+  .locations-grid {
+    gap: 30px;
+  }
+}
+
+/* Very small devices (portrait phones, less than 400px) */
+@media (max-width: 400px) {
+  .home-container {
+    padding: 10px;
+  }
+  
+  .header-container {
+    padding: 0.5rem;
+  }
+  
+  .card-image-container {
+    height: 140px;
+  }
+  
+  .card-content {
+    padding: 12px;
+  }
+  
+  .location-name {
+    font-size: 1.1rem;
+  }
+  
+  .location-address {
+    font-size: 0.8rem;
+  }
+  
+  .select-button {
+    padding: 7px 14px;
+    font-size: 0.8rem;
   }
 }
