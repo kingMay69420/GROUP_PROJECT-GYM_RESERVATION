@@ -94,8 +94,9 @@ function Reserve() {
             className="form-input"
             onChange={(e) => setFormData({ ...formData, date: e.target.value })} 
           />
+          <small className="input-note">Select the date you want to reserve the venue for.</small>
         </div>
-        
+
         <div className="input-group">
           <select 
             className="form-select"
@@ -108,8 +109,9 @@ function Reserve() {
               </option>
             ))}
           </select>
+          <small className="input-note">Choose your preferred time to use the venue on the selected date.</small>
         </div>
-        
+
         <div className="price-display">
           <span>Total Price:</span>
           <span className="price-amount">₱{formData.price.toFixed(2)}</span>
