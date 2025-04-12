@@ -198,11 +198,11 @@ td button:hover {
 .table-wrapper table {
   width: 100%;
   border-collapse: collapse;
-  min-width: unset; /* remove fixed width */
+  min-width: unset;
 }
 
+/* Responsive Table for Mobile Devices */
 @media (max-width: 768px) {
-  /* Stack table for small screens */
   .table-wrapper table,
   .table-wrapper thead,
   .table-wrapper tbody,
@@ -219,27 +219,42 @@ td button:hover {
   .table-wrapper tr {
     margin-bottom: 1rem;
     border-bottom: 2px solid #ccc;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   }
 
   .table-wrapper td {
-    text-align: right;
-    padding-left: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    border: none;
     position: relative;
-    font-size: 14px;
   }
+
+  .table-wrapper td:nth-child(1)::before { content: "Name"; }
+  .table-wrapper td:nth-child(2)::before { content: "Email"; }
+  .table-wrapper td:nth-child(3)::before { content: "Date"; }
+  .table-wrapper td:nth-child(4)::before { content: "Time Slot"; }
+  .table-wrapper td:nth-child(5)::before { content: "Price"; }
+  .table-wrapper td:nth-child(6)::before { content: "Actions"; }
 
   .table-wrapper td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
     font-weight: bold;
-    text-align: left;
-    color: #555;
+    color: #444;
+    padding-right: 1rem;
+    min-width: 100px;
+  }
+
+  .table-wrapper td button {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.6rem;
+    margin-left: 0.5rem;
   }
 }
-
 
 /* Mobile - Portrait and Landscape */
 @media (max-width: 768px) {
