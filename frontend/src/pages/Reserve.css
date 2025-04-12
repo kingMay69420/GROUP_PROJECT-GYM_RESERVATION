@@ -1,123 +1,57 @@
 :root {
-    --primary: #4361ee;
-    --primary-dark: #3a56d4;
-    --secondary: #f72585;
-    --success: #4cc9f0;
-    --text-dark: #212529;
-    --text-light: #f8f9fa;
-    --text-muted: #6c757d;
-    --border-color: #dee2e6;
+    --primary: #4361ee;       /* Vibrant blue */
+    --primary-dark: #3a56d4;  /* Slightly darker blue */
+    --secondary: #f72585;     /* Energetic pink */
+    --success: #4cc9f0;       /* Bright teal */
+    --text-dark: #212529;     /* Dark gray */
+    --text-light: #f8f9fa;    /* Off-white */
+    --text-muted: #6c757d;    /* Medium gray */
+    --border-color: #dee2e6;  /* Light gray border */
   }
   
   body {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Changed from center to prevent vertical overflow */
+    align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 10px;
+    padding: 15px;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #38A2D7, #561139);
     background-attachment: fixed;
   }
   
   .reservation-container {
-    width: 90%;
+    width: 100%;
     max-width: 400px;
-    padding: 20px 15px; /* Reduced padding for mobile */
+    padding: 25px 20px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px; /* Slightly smaller radius */
-    backdrop-filter: blur(5px); /* Reduced blur for performance */
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    margin: 10px 0; /* Added margin for breathing room */
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
   
-  /* Mobile-first optimizations */
-  @media (max-width: 767.98px) {
-    .reservation-container {
-      max-width: 100%;
-      padding: 18px 12px; /* More compact padding */
-      margin: 5px 0;
-    }
-  
-    h2 {
-      font-size: 1.3rem; /* Smaller heading */
-      margin-bottom: 15px;
-    }
-  
-    input, select, button {
-      padding: 10px 12px; /* More compact inputs */
-      margin: 8px 0; /* Tighter spacing */
-      font-size: 0.9rem;
-    }
-  
-    button {
-      padding: 12px; /* Slightly larger for touch */
-      margin: 10px 0;
-    }
+  h2 {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
   }
   
-  /* Very small phones (≤360px) */
-  @media (max-width: 360px) {
-    .reservation-container {
-      padding: 15px 10px;
-      border-radius: 8px;
-    }
-  
-    h2 {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-    }
-  
-    input, select {
-      padding: 8px 10px;
-      font-size: 0.85rem;
-    }
-  
-    button {
-      padding: 10px;
-      font-size: 0.9rem;
-    }
+  input, select {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s ease;
   }
   
-  /* Tablet and larger screens */
-  @media (min-width: 768px) {
-    body {
-      padding: 20px;
-      align-items: center; /* Center vertically on larger screens */
-    }
-  
-    .reservation-container {
-      padding: 25px 20px;
-      backdrop-filter: blur(8px);
-      max-width: 450px;
-    }
-  
-    h2 {
-      font-size: 1.6rem;
-    }
-  
-    input, select, button {
-      padding: 12px 14px;
-      font-size: 1rem;
-    }
-  }
-  
-  /* Desktop */
-  @media (min-width: 992px) {
-    .reservation-container {
-      max-width: 500px;
-      padding: 30px 25px;
-    }
-  
-    h2 {
-      font-size: 1.8rem;
-    }
-  }
-  
-  /* Rest of your existing styles... */
   input:focus, select:focus {
     border-color: var(--primary);
     box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
@@ -127,10 +61,13 @@
   
   button {
     width: 100%;
+    margin: 15px 0;
+    padding: 13px;
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: white;
     border: none;
     border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -138,8 +75,13 @@
   }
   
   button:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  button:active {
+    transform: translateY(0);
   }
   
   /* Form validation styling */
@@ -149,4 +91,115 @@
   
   input:valid {
     border-color: #51cf66;
+  }
+  
+  /* Smartphone Optimizations */
+  @media (max-width: 767.98px) {
+    body {
+      padding: 12px;
+      align-items: flex-start; /* Better for mobile forms */
+      min-height: 100vh;
+      height: auto;
+    }
+  
+    .reservation-container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: none;
+      padding: 22px 18px;
+      backdrop-filter: blur(5px); /* Better mobile performance */
+    }
+  
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+  
+    input, select, button {
+      min-height: 48px; /* Better touch targets */
+      font-size: 1rem;
+    }
+  
+    button {
+      margin: 12px 0;
+    }
+  
+    /* Landscape orientation */
+    @media (orientation: landscape) {
+      .reservation-container {
+        max-width: 90%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+  
+      input, select, button {
+        min-height: 44px;
+        padding: 10px 12px;
+      }
+    }
+  }
+  
+  /* Extra Small Phones (≤320px) */
+  @media (max-width: 320px) {
+    .reservation-container {
+      padding: 18px 14px;
+      border-radius: 10px;
+    }
+  
+    h2 {
+      font-size: 1.3rem;
+    }
+  
+    input, select {
+      padding: 10px 12px;
+      font-size: 0.9rem;
+    }
+  
+    button {
+      padding: 12px;
+      font-size: 0.95rem;
+    }
+  }
+  
+  /* Tablet and Desktop Enhancements */
+  @media (min-width: 768px) {
+    body {
+      padding: 20px;
+    }
+  
+    .reservation-container {
+      max-width: 500px;
+      padding: 32px 28px;
+      backdrop-filter: blur(8px);
+      margin: 0 auto;
+    }
+  
+    .reservation-container:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+  
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .reservation-container {
+      max-width: 550px;
+      padding: 36px 32px;
+    }
+  
+    h2 {
+      font-size: 1.9rem;
+    }
+  }
+  
+  /* Accessibility Improvements */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
+    }
   }
