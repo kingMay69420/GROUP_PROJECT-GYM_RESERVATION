@@ -1,103 +1,145 @@
 /* Base Styles */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #16222a 0%, #3a6073 100%);
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-  }
-  
-  /* Login Container */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #16222a 0%, #3a6073 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+/* Login Container */
+.login-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 400px;
+  margin: 2rem;
+  box-sizing: border-box;
+}
+
+.login-container h2 {
+  color: #16222a;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+/* Form Elements */
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #3a6073;
+  box-shadow: 0 0 0 2px rgba(58, 96, 115, 0.2);
+}
+
+/* Login Button */
+.login-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #16222a, #3a6073);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.login-button:hover {
+  background: linear-gradient(to right, #3a6073, #16222a);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+/* Link Styles */
+.register-link {
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.register-link a {
+  color: #3a6073;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.register-link a:hover {
+  color: #16222a;
+  text-decoration: underline;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
   .login-container {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    padding: 2.5rem;
-    width: 100%;
-    max-width: 400px;
-    margin: 2rem;
+    padding: 2rem;
+    margin: 1.5rem;
   }
-  
+
   .login-container h2 {
-    color: #16222a;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
+    font-size: 1.4rem;
   }
-  
-  /* Form Elements */
-  .input-group {
-    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1.5rem;
+    margin: 1rem;
   }
-  
-  .input-group input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    transition: border-color 0.3s;
-    box-sizing: border-box;
-  }
-  
-  .input-group input:focus {
-    outline: none;
-    border-color: #3a6073;
-    box-shadow: 0 0 0 2px rgba(58, 96, 115, 0.2);
-  }
-  
+
   .login-button {
-    display: block;
-    width: 50%; /* or whatever width you prefer */
-    margin: 0 auto 1.5rem; /* top | horizontal | bottom */
-    padding: 12px; /* increased from 5px for better proportions */
-    background: linear-gradient(to right, #16222a, #3a6073);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    font-size: 0.95rem;
   }
-  
-  /* The rest of your CSS remains the same */
-  .login-button:hover {
-    background: linear-gradient(to right, #3a6073, #16222a);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  .input-group input {
+    font-size: 0.95rem;
   }
-  
-  .login-button:active {
-    transform: translateY(0);
+}
+
+@media (max-width: 360px) {
+  .login-container {
+    padding: 1rem;
+    margin: 0.8rem;
   }
-  
-  /* Link Styles */
+
+  .login-container h2 {
+    font-size: 1.2rem;
+  }
+
+  .login-button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
   .register-link {
-    text-align: center;
-    color: #666;
+    font-size: 0.8rem;
   }
-  
-  .register-link a {
-    color: #3a6073;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-  }
-  
-  .register-link a:hover {
-    color: #16222a;
-    text-decoration: underline;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 480px) {
-    .login-container {
-      padding: 1.5rem;
-      margin: 1rem;
-    }
-  }
+}
