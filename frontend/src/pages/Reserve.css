@@ -18,6 +18,7 @@
     padding: 15px;
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #38A2D7, #561139);
+    background-attachment: fixed;
   }
   
   .reservation-container {
@@ -92,149 +93,113 @@
     border-color: #51cf66;
   }
   
- /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
+  /* Smartphone Optimizations */
+  @media (max-width: 767.98px) {
     body {
       padding: 12px;
+      align-items: flex-start; /* Better for mobile forms */
+      min-height: 100vh;
+      height: auto;
     }
-    
+  
     .reservation-container {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+      max-width: none;
       padding: 22px 18px;
-      border-radius: 12px;
-      max-width: 100%;
-      margin: 0 auto;
-      width: calc(100% - 24px); /* Prevents edge touching */
+      backdrop-filter: blur(5px); /* Better mobile performance */
     }
-    
+  
     h2 {
       font-size: 1.4rem;
-      margin-bottom: 18px;
-      line-height: 1.3;
+      margin-bottom: 16px;
     }
-    
-    input, select {
-      padding: 12px 14px;
-      font-size: 0.95rem;
-      min-height: 48px; /* Better touch target */
-    }
-    
-    button {
-      padding: 14px;
+  
+    input, select, button {
+      min-height: 48px; /* Better touch targets */
       font-size: 1rem;
-      min-height: 48px; /* Better touch target */
     }
-    
-    /* Mobile-specific optimizations */
-    input:focus, select:focus {
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+  
+    button {
+      margin: 12px 0;
     }
-    
-    .reservation-container {
-      backdrop-filter: blur(5px); /* Reduced for mobile performance */
+  
+    /* Landscape orientation */
+    @media (orientation: landscape) {
+      .reservation-container {
+        max-width: 90%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+  
+      input, select, button {
+        min-height: 44px;
+        padding: 10px 12px;
+      }
     }
   }
   
-  /* Small devices (landscape phones, 576px and up) */
-  @media (min-width: 576px) and (max-width: 767.98px) {
+  /* Extra Small Phones (≤320px) */
+  @media (max-width: 320px) {
     .reservation-container {
-      padding: 28px 24px;
-      max-width: 450px;
-      margin: 20px auto;
+      padding: 18px 14px;
+      border-radius: 10px;
     }
-    
+  
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 22px;
+      font-size: 1.3rem;
     }
-    
+  
     input, select {
-      padding: 13px 15px;
-      font-size: 1rem;
-      min-height: 48px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
     }
-    
+  
     button {
-      padding: 14px;
-      font-size: 1rem;
-      min-height: 48px;
-    }
-    
-    /* Better transitions for tablets */
-    .reservation-container {
-      transition: all 0.3s ease;
+      padding: 12px;
+      font-size: 0.95rem;
     }
   }
   
-  /* Medium devices (tablets, 768px and up) */
+  /* Tablet and Desktop Enhancements */
   @media (min-width: 768px) {
     body {
       padding: 20px;
     }
-    
+  
     .reservation-container {
       max-width: 500px;
       padding: 32px 28px;
-      backdrop-filter: blur(8px); /* Slightly reduced blur */
-      margin: 30px auto;
+      backdrop-filter: blur(8px);
+      margin: 0 auto;
     }
-    
+  
     .reservation-container:hover {
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25); /* More subtle shadow */
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
       border-color: rgba(255, 255, 255, 0.25);
     }
-    
+  
     h2 {
       font-size: 1.75rem;
     }
-    
-    input:focus, select:focus {
-      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.25); /* More subtle focus */
-    }
   }
   
-  /* Large devices (desktops, 992px and up) */
   @media (min-width: 992px) {
     .reservation-container {
       max-width: 550px;
       padding: 36px 32px;
     }
-    
+  
     h2 {
       font-size: 1.9rem;
     }
   }
   
-  /* Mobile landscape optimization */
-  @media (max-width: 767.98px) and (orientation: landscape) {
-    .reservation-container {
-      max-width: 90%;
-      padding: 20px;
-    }
-    
-    input, select, button {
-      min-height: 44px; /* Slightly smaller in landscape */
-      padding: 10px 12px;
-    }
-  }
-  
-  /* Very small phones (less than 360px) */
-  @media (max-width: 359.98px) {
-    .reservation-container {
-      padding: 18px 14px;
-      border-radius: 10px;
-    }
-    
-    h2 {
-      font-size: 1.3rem;
-    }
-    
-    input, select {
-      padding: 10px 12px;
-      font-size: 0.9rem;
-    }
-    
-    button {
-      padding: 12px;
-      font-size: 0.95rem;
+  /* Accessibility Improvements */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      transition: none !important;
+      animation: none !important;
     }
   }
