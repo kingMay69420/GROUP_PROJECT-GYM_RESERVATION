@@ -9,7 +9,7 @@ function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/api/staff/login", form);
+      const res = await axios.post("https://group-project-gym-backend.vercel.app/api/staff/login", form);
 
       alert("Login Success!");
       navigate("/dashboard", { state: { user: res.data.user } });

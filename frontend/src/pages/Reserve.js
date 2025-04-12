@@ -23,7 +23,7 @@ function Reserve() {
   const checkAvailability = async () => {
     setIsLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/reservations/check-availability", {
+      const res = await axios.post("https://group-project-gym-backend.vercel.app/api/reservations/check-availability", {
         date: formData.date,
         timeSlot: formData.timeSlot,
       });
@@ -38,8 +38,8 @@ function Reserve() {
   const handleReserve = async () => {
     setIsLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/reservations/reserve", formData);
-      await axios.post("http://localhost:5000/api/otp/send-otp", {
+      await axios.post("https://group-project-gym-backend.vercel.app/api/reservations/reserve", formData);
+      await axios.post("https://group-project-gym-backend.vercel.app/api/otp/send-otp", {
         email: formData.email,
       });
       navigate("/otp", { 

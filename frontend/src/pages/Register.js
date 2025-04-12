@@ -12,7 +12,7 @@ function Register() {
 
   const handleRegister = async () => {
     try {
-        await axios.post("http://localhost:5000/api/staff/register", form);
+        await axios.post("https://group-project-gym-backend.vercel.app/api/staff/register", form);
 
       alert("Registered Successfully");
     } catch (err) {

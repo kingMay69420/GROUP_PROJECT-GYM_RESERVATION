@@ -24,7 +24,7 @@ function Dashboard() {
 
   const loadReservations = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/reservations?barangay=${user.barangay}`);
+      const res = await axios.get(`https://group-project-gym-backend.vercel.app/api/reservations?barangay=${user.barangay}`);
       setReservations(res.data);
     } catch (error) {
       console.error("Error loading reservations", error);
@@ -33,7 +33,7 @@ function Dashboard() {
 
   const handleAdd = async () => {
     try {
-      await axios.post("http://localhost:5000/api/reservations/reserve", form);
+      await axios.post("https://group-project-gym-backend.vercel.app/api/reservations/reserve", form);
       setForm({ ...form, name: "", contact: "", email: "", date: "", timeSlot: "", price: "" });
       loadReservations();
       setIsFormVisible(false);  // Hide form after adding
@@ -45,7 +45,7 @@ function Dashboard() {
   const handleUpdate = async () => {
     try {
       // Make the PUT request to update the reservation
-      const response = await axios.put(`http://localhost:5000/api/reservations/${editId}`, form);
+      const response = await axios.put(`https://group-project-gym-backend.vercel.app/api/reservations/${editId}`, form);
       
       // Log success message from the response
       console.log(response.data.message);  // Optional: log the success message from the backend
@@ -69,7 +69,7 @@ function Dashboard() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this reservation?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/reservations/${id}`);
+        await axios.delete(`https://group-project-gym-backend.vercel.app/api/reservations/${id}`);
         loadReservations();
       } catch (error) {
         console.error("Error deleting reservation", error);

@@ -14,7 +14,7 @@ function OTP() {
 // In OTP.js, modify the verifyOTP function:
 const verifyOTP = async () => {
   try {
-    await axios.post("http://localhost:5000/api/otp/verify-otp", { email, otp });
+    await axios.post("https://group-project-gym-backend.vercel.app/api/otp/verify-otp", { email, otp });
     
     // Navigate to Success Page with reservation details from location.state
     navigate("/success", { 
@@ -31,7 +31,7 @@ const verifyOTP = async () => {
 
   const resendOTP = async () => {
     try {
-      await axios.post("http://localhost:5000/api/otp/send-otp", { email });
+      await axios.post("https://group-project-gym-backend.vercel.app/api/otp/send-otp", { email });
       setTimeLeft(300); // Reset timer to 5 minutes
       setIsResendDisabled(true); // Disable resend button again
       alert("OTP has been resent to your email");
