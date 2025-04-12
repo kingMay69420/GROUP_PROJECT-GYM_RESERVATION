@@ -89,15 +89,17 @@ function Reserve() {
         </div>
         
         <div className="input-group">
+        <small className="input-note">Select the date you want to reserve the venue for.</small>
           <input 
             type="date" 
             className="form-input"
             onChange={(e) => setFormData({ ...formData, date: e.target.value })} 
           />
-          <small className="input-note">Select the date you want to reserve the venue for.</small>
+         
         </div>
 
         <div className="input-group">
+        <small className="input-note">Choose your preferred time to use the venue on the selected date.</small>
           <select 
             className="form-select"
             onChange={(e) => setFormData({ ...formData, timeSlot: e.target.value })}
@@ -109,7 +111,7 @@ function Reserve() {
               </option>
             ))}
           </select>
-          <small className="input-note">Choose your preferred time to use the venue on the selected date.</small>
+         
         </div>
 
         <div className="price-display">
