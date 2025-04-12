@@ -33,12 +33,18 @@ function Register() {
       </div>
       
       <div className="input-group">
-        <input 
-          placeholder="Barangay" 
+        <select
+          value={form.barangay}
           onChange={(e) => setForm({ ...form, barangay: e.target.value })}
           className="form-input"
-        />
+        >
+          <option value="">Select Barangay</option>
+          <option value="TALISAY">TALISAY</option>
+          <option value="APAGAN 1">APAGAN 1</option>
+          <option value="AMONTAY">AMONTAY</option>
+        </select>
       </div>
+
       
       <div className="input-group">
         <input 
