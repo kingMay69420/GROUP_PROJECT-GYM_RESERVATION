@@ -106,7 +106,10 @@ function Dashboard() {
       {/* Dashboard Content */}
       <div className="dashboard-container">
         {/* Toggle Form Button */}
-        <button onClick={() => setIsFormVisible(prev => !prev)}>
+        <button 
+          className="toggle-form-button"
+          onClick={() => setIsFormVisible(prev => !prev)}
+        >
           {isFormVisible ? "Close Form" : "Add Reservation"}
         </button>
   
@@ -114,49 +117,65 @@ function Dashboard() {
         {isFormVisible && (
           <div className={`form-section ${isFormVisible ? 'show' : 'hide'}`}>
             <h3>{editId ? "Edit Reservation" : "New Reservation"}</h3>
-            <input type="date" value={form.date} onChange={(e) => setForm({ ...form, date: e.target.value })} />
-            <input placeholder="Time Slot" value={form.timeSlot} onChange={(e) => setForm({ ...form, timeSlot: e.target.value })} />
-            <input placeholder="Price" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} />
-            {editId ? (
-              <>
-                <button onClick={handleUpdate}>Update</button>
-                <button onClick={() => setEditId(null)}>Cancel</button>
-              </>
-            ) : (
-              <button onClick={handleAdd}>Add</button>
-            )}
+            <input 
+              type="date" 
+              value={form.date} 
+              onChange={(e) => setForm({ ...form, date: e.target.value })} 
+            />
+            <input 
+              placeholder="Time Slot" 
+              value={form.timeSlot} 
+              onChange={(e) => setForm({ ...form, timeSlot: e.target.value })} 
+            />
+            <input 
+              placeholder="Price" 
+              value={form.price} 
+              onChange={(e) => setForm({ ...form, price: e.target.value })} 
+            />
+            <div className="form-buttons">
+              {editId ? (
+                <>
+                  <button onClick={handleUpdate}>Update</button>
+                  <button onClick={() => setEditId(null)}>Cancel</button>
+                </>
+              ) : (
+                <button onClick={handleAdd}>Add</button>
+              )}
+            </div>
           </div>
         )}
   
         <div className="reservation-list">
           <h3>Reservations for Barangay {user?.barangay}</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Date</th>
-                <th>Time Slot</th>
-                <th>Price</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reservations.map((res) => (
-                <tr key={res._id}>
-                  <td>{res.name}</td>
-                  <td>{res.email}</td>
-                  <td>{res.date}</td>
-                  <td>{res.timeSlot}</td>
-                  <td>{res.price}</td>
-                  <td>
-                    <button onClick={() => { setEditId(res._id); setForm(res); setIsFormVisible(true); }}>Edit</button>
-                    <button onClick={() => handleDelete(res._id)}>Delete</button>
-                  </td>
+          <div className="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Price</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {reservations.map((res) => (
+                  <tr key={res._id}>
+                    <td data-label="Name">{res.name}</td>
+                    <td data-label="Email">{res.email}</td>
+                    <td data-label="Date">{res.date}</td>
+                    <td data-label="Time">{res.timeSlot}</td>
+                    <td data-label="Price">{res.price}</td>
+                    <td data-label="Actions" className="actions-cell">
+                      <button onClick={() => { setEditId(res._id); setForm(res); setIsFormVisible(true); }}>Edit</button>
+                      <button onClick={() => handleDelete(res._id)}>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </>
