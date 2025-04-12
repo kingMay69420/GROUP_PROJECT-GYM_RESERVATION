@@ -118,20 +118,37 @@ function Dashboard() {
           <div className={`form-section ${isFormVisible ? 'show' : 'hide'}`}>
             <h3>{editId ? "Edit Reservation" : "New Reservation"}</h3>
             <input 
-              type="date" 
-              value={form.date} 
-              onChange={(e) => setForm({ ...form, date: e.target.value })} 
-            />
-            <input 
-              placeholder="Time Slot" 
-              value={form.timeSlot} 
-              onChange={(e) => setForm({ ...form, timeSlot: e.target.value })} 
-            />
-            <input 
-              placeholder="Price" 
-              value={form.price} 
-              onChange={(e) => setForm({ ...form, price: e.target.value })} 
-            />
+                placeholder="Name" 
+                value={form.name} 
+                onChange={(e) => setForm({ ...form, name: e.target.value })} 
+              />
+              <input 
+                placeholder="Email" 
+                type="email"
+                value={form.email} 
+                onChange={(e) => setForm({ ...form, email: e.target.value })} 
+              />
+              <input 
+                placeholder="Contact Number" 
+                value={form.contact} 
+                onChange={(e) => setForm({ ...form, contact: e.target.value })} 
+              />
+
+              <input 
+                type="date" 
+                value={form.date} 
+                onChange={(e) => setForm({ ...form, date: e.target.value })} 
+              />
+              <input 
+                placeholder="Time Slot" 
+                value={form.timeSlot} 
+                onChange={(e) => setForm({ ...form, timeSlot: e.target.value })} 
+              />
+              <input 
+                placeholder="Price" 
+                value={form.price} 
+                onChange={(e) => setForm({ ...form, price: e.target.value })} 
+              />
             <div className="form-buttons">
               {editId ? (
                 <>
