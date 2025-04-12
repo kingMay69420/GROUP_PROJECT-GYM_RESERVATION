@@ -12,70 +12,69 @@
 .home-container {
   min-height: 100vh;
   width: 100%;
-  padding: 40px 20px;
+  padding: 20px 15px;
   font-family: 'Poppins', sans-serif;
   color: var(--text-light);
 }
 
 .header-container {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.header-container {
   width: 100%;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* optional shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  max-width: 1200px; /* or your preferred max width */
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  gap: 1rem;
 }
 
 .title-wrapper {
-  text-align: left;
+  text-align: center;
+  width: 100%;
 }
 
 .login-button {
-  padding: 0.6rem 1.5rem;
-  background-color: #3498db;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #4cc9f0, #4895ef);
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 50px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+  font-size: 0.95rem;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 140px;
+  box-sizing: border-box;
 }
 
 .login-button:hover {
-  background-color: #2980b9;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background-color: #3a2e55;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .login-button:active {
   transform: translateY(0);
 }
+
 .locations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+  grid-template-columns: 1fr;
+  gap: 25px;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  margin: 30px auto 0;
+  padding: 0 10px;
 }
 
 .location-card {
   background: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border: none;
@@ -83,14 +82,9 @@
   cursor: pointer;
 }
 
-.location-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
 .card-image-container {
   position: relative;
-  height: 200px;
+  height: 180px;
   overflow: hidden;
 }
 
@@ -99,10 +93,6 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.location-card:hover .location-image {
-  transform: scale(1.1);
 }
 
 .image-overlay {
@@ -115,27 +105,27 @@
 }
 
 .card-content {
-  padding: 24px;
+  padding: 20px;
 }
 
 .location-name {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: var(--text-light);
 }
 
 .location-address {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
-  margin-bottom: 20px;
-  line-height: 1.6;
+  margin-bottom: 16px;
+  line-height: 1.5;
 }
 
 .select-button {
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 18px;
   background: var(--primary);
   color: white;
   border-radius: 24px;
@@ -151,30 +141,22 @@
   transition: transform 0.3s ease;
 }
 
-.location-card:hover .select-button {
-  background: var(--primary-dark);
-  transform: translateX(4px);
-}
-
-.location-card:hover .select-button::after {
-  transform: translateX(4px);
-}
-
 /* Focus states for accessibility */
 .location-card:focus-within {
   outline: 2px solid var(--success);
   outline-offset: 2px;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .gym-title {
-    font-size: 2rem;
+/* Tablet and larger mobile devices */
+@media (min-width: 480px) {
+  .home-container {
+    padding: 25px 20px;
   }
   
   .locations-grid {
-    grid-template-columns: 1fr;
-    max-width: 500px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0 15px;
   }
   
   .card-image-container {
@@ -182,86 +164,55 @@
   }
 }
 
-@media (max-width: 480px) {
-  .home-container {
-    padding: 30px 15px;
-  }
-  
-  .gym-title {
-    font-size: 1.8rem;
-  }
-  
-  .card-content {
-    padding: 20px;
-  }
-}
-
-
-/* Staff Login Button - Fixed Size Version */
-.login-button {
-  display: inline-block;
-  padding: 12px 24px; /* Fixed padding */
-  font-size: 1rem;
-  font-weight: 600;
-  background: linear-gradient(135deg, #4cc9f0, #4895ef);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  width: auto; /* Changed from min-width to auto */
-  margin-left: auto;
-  /* Explicit size constraints */
-  min-width: 140px;
-  max-width: 140px;
-  height: 44px;
-  box-sizing: border-box;
-}
-
-.login-button:hover {
-  background-color: #3a2e55;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.login-button:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Header adjustments to accommodate fixed button */
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.title-wrapper {
-  text-align: left;
-  flex-grow: 1;
-}
-
-/* Responsive adjustments for login button */
-@media (max-width: 768px) {
+/* Desktop and larger tablets */
+@media (min-width: 768px) {
   .header-content {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
   }
   
   .title-wrapper {
-    text-align: center;
-    margin-bottom: 20px;
+    text-align: left;
   }
   
   .login-button {
-    margin: 0 auto; /* Center on mobile */
-    /* Maintain the same size on mobile */
-    min-width: 140px;
-    max-width: 140px;
+    margin-left: auto;
+  }
+  
+  .locations-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+  }
+  
+  .card-image-container {
+    height: 200px;
+  }
+  
+  .location-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  .location-card:hover .location-image {
+    transform: scale(1.1);
+  }
+  
+  .location-card:hover .select-button {
+    background: var(--primary-dark);
+    transform: translateX(4px);
+  }
+  
+  .location-card:hover .select-button::after {
+    transform: translateX(4px);
+  }
+}
+
+/* Large desktop screens */
+@media (min-width: 1200px) {
+  .home-container {
+    padding: 40px;
   }
 }
