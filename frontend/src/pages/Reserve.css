@@ -92,26 +92,76 @@
     border-color: #51cf66;
   }
   
-  /* Small devices (landscape phones, 576px and up) */
-  @media (min-width: 576px) {
+ /* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+    body {
+      padding: 12px;
+    }
+    
     .reservation-container {
-      padding: 30px 25px;
-      max-width: 450px;
+      padding: 22px 18px;
+      border-radius: 12px;
+      max-width: 100%;
+      margin: 0 auto;
+      width: calc(100% - 24px); /* Prevents edge touching */
     }
     
     h2 {
-      font-size: 1.7rem;
-      margin-bottom: 24px;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+      line-height: 1.3;
     }
     
     input, select {
-      padding: 14px 16px;
-      font-size: 1rem;
+      padding: 12px 14px;
+      font-size: 0.95rem;
+      min-height: 48px; /* Better touch target */
     }
     
     button {
       padding: 14px;
       font-size: 1rem;
+      min-height: 48px; /* Better touch target */
+    }
+    
+    /* Mobile-specific optimizations */
+    input:focus, select:focus {
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+    }
+    
+    .reservation-container {
+      backdrop-filter: blur(5px); /* Reduced for mobile performance */
+    }
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media (min-width: 576px) and (max-width: 767.98px) {
+    .reservation-container {
+      padding: 28px 24px;
+      max-width: 450px;
+      margin: 20px auto;
+    }
+    
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 22px;
+    }
+    
+    input, select {
+      padding: 13px 15px;
+      font-size: 1rem;
+      min-height: 48px;
+    }
+    
+    button {
+      padding: 14px;
+      font-size: 1rem;
+      min-height: 48px;
+    }
+    
+    /* Better transitions for tablets */
+    .reservation-container {
+      transition: all 0.3s ease;
     }
   }
   
@@ -123,21 +173,22 @@
     
     .reservation-container {
       max-width: 500px;
-      padding: 35px 30px;
-      backdrop-filter: blur(10px);
+      padding: 32px 28px;
+      backdrop-filter: blur(8px); /* Slightly reduced blur */
+      margin: 30px auto;
     }
     
     .reservation-container:hover {
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25); /* More subtle shadow */
+      border-color: rgba(255, 255, 255, 0.25);
     }
     
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.75rem;
     }
     
     input:focus, select:focus {
-      box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.2);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.25); /* More subtle focus */
     }
   }
   
@@ -145,32 +196,45 @@
   @media (min-width: 992px) {
     .reservation-container {
       max-width: 550px;
+      padding: 36px 32px;
+    }
+    
+    h2 {
+      font-size: 1.9rem;
     }
   }
   
-  /* Extra small devices (portrait phones, less than 400px) */
-  @media (max-width: 400px) {
-    body {
-      padding: 10px;
+  /* Mobile landscape optimization */
+  @media (max-width: 767.98px) and (orientation: landscape) {
+    .reservation-container {
+      max-width: 90%;
+      padding: 20px;
     }
     
+    input, select, button {
+      min-height: 44px; /* Slightly smaller in landscape */
+      padding: 10px 12px;
+    }
+  }
+  
+  /* Very small phones (less than 360px) */
+  @media (max-width: 359.98px) {
     .reservation-container {
-      padding: 20px 15px;
+      padding: 18px 14px;
       border-radius: 10px;
     }
     
     h2 {
-      font-size: 1.4rem;
-      margin-bottom: 18px;
+      font-size: 1.3rem;
     }
     
     input, select {
-      padding: 11px 12px;
+      padding: 10px 12px;
       font-size: 0.9rem;
     }
     
     button {
       padding: 12px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
   }
