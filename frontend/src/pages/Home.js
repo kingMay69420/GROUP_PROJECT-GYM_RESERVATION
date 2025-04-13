@@ -25,15 +25,17 @@ function Home() {
       <header className="header-container">
         <div className="header-content">
           <div className="title-wrapper">
-            <h1 className="gym-title">NASIPIT GYM RESERVATION</h1>
-            <p className="gym-subtitle">Select your preferred location</p>
+              <h1 className="gym-title">NASIPIT GYM RESERVATION</h1>
+              <p className="gym-subtitle">Select your preferred location</p>
           </div>
-          <button 
-            className="login-button"
-            onClick={() => navigate('/staff/login')}
-          >
-            Staff Login
-          </button>
+          <div className="button-wrapper">
+            <button 
+              className="login-button"
+              onClick={() => navigate('/staff/login')}
+            >
+              Staff Login
+            </button>
+          </div>
         </div>
       </header>
       
