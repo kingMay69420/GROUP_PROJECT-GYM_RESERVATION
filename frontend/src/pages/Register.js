@@ -14,10 +14,11 @@ function Register() {
     try {
         await axios.post("https://group-project-gym-backend.vercel.app/api/staff/register", form);
 
-      alert("Registered Successfully");
-    } catch (err) {
-      alert("Registration Failed");
-    }
+        alert("Registered Successfully");
+        navigate("/login"); // 👈 Redirect to login after success
+      } catch (err) {
+        alert("Registration Failed");
+      }
   };
 
   return (
