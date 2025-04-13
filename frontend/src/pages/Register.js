@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import "./Register.css"; // Reusing the same CSS file
 
 function Register() {
@@ -10,6 +10,8 @@ function Register() {
     password: "" 
   });
 
+  const navigate = useNavigate();
+  
   const handleRegister = async () => {
     try {
         await axios.post("https://group-project-gym-backend.vercel.app/api/staff/register", form);
